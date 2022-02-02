@@ -1,0 +1,18 @@
+# conda env create -n kkseqtools -f conda_env_KKSeqTools_VERSION.yml
+
+name: KKSeqTools
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+  - defaults
+dependencies:
+  - numpy
+  - numba
+  - pandas
+  - python
+  - samtools
+  - pysam
+  - cython
+  - biopython
+
