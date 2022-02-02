@@ -15,5 +15,4 @@
 * sequence_length_stats.py
 * split_hmms_to_files.py
 * split_seqs_to_files.py
-
 * annoVIBRANT: annotation wrapper for [VIBRANT](https://github.com/AnantharamanLab/VIBRANT)
