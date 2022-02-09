@@ -1,4 +1,8 @@
 # **KKSeqTools**
+
+### Citation
+Please cite this GitHub repository if you find these tools useful.  
+
 ### Public bioinformatic seq tools
 
 * count_sequence_length.py
@@ -6,6 +10,7 @@
 * Extract_Seqs.py
 * fasta_parse.py
 * filter_coverage_file.py
+* flag_circular.py
 * genbank_to_fasta.py
 * headers_from_fasta.py
 * hmm_parser.py
