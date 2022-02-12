@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
+# vRhyme
 # Author: Kristopher Kieft
 # University of Wisconsin-Madison
-# 2022
 
 
 import argparse
@@ -47,11 +47,11 @@ class CircularFasta:
 class SeqTools: # generator
     def __init__(self, fasta):
         self.fasta = fasta
-        self.mismatch = 0
         # entry point is __iter__
     
     def looper(self):
         self.trLen = 0
+        self.mismatch = 0
         self.info()
         self.dtr()
         if not self.trType:
@@ -88,25 +88,23 @@ class SeqTools: # generator
         for i,j in z:
             if i == j:
                 iHolder.append(i)
-                mHolder.append(True)
+                mHolder.append(False)
             else:
                 self.mismatch += 1
                 iHolder.append(i)
-                mHolder.append(False)
+                mHolder.append(True)
                 if self.mismatch >= mis:
                     break
-
+        
         if self.mismatch > 0:
-            while True: # no mismatches at end
-                try:
-                    if mHolder[-1] == False:
-                        iHolder.pop()
-                        mHolder.pop()
-                        self.mismatch -= 1
-                    else:
-                        break
-                except IndexError:
-                    break # mHolder is empty
+            while True:
+                if any(mHolder[-mis_2:]): # no mismatches at end, check mis_2 at end
+                    if mHolder[-1]:
+                        self.mismatch -= 1 # popped holder is a mismatch
+                    iHolder.pop()
+                    mHolder.pop()
+                else:
+                    break
         
         self.trSeq = self.seed + ''.join(iHolder)
         self.trLen = len(self.trSeq)
@@ -202,7 +200,7 @@ if __name__ == '__main__':
     vRhyme.add_argument('-n', metavar='', type=int, nargs=1, default=[2], help='maximum mismatches in repeats (seed of length -l must have 0) [2]')
     #
     args = vRhyme.parse_args()
-    global length, maxx, maxx_2, mis
+    global length, maxx, maxx_2, mis, mis_2
     bins = args.b[0]
     ext = args.e[0]
     fasta = args.f[0]
@@ -211,6 +209,7 @@ if __name__ == '__main__':
     maxx = args.m[0]
     maxx_2 = maxx*2
     mis = args.n[0]
+    mis_2 = mis*2
     #
     #
     if length < 20:
