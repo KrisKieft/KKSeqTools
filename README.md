@@ -20,4 +20,5 @@ Please cite this GitHub repository if you find these tools useful.
 * sequence_length_stats.py
 * split_hmms_to_files.py
 * split_seqs_to_files.py
+* table_sort_filter.py
 * annoVIBRANT: annotation wrapper for [VIBRANT](https://github.com/AnantharamanLab/VIBRANT)
